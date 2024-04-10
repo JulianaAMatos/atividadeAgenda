@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+       let arrNum = [];
+        //CRIAR SISTEMA DE GERENCIAMENTO DE USUARIO
+    function Agenda(){
+        return  parseInt(prompt(`
+            *******MENU*******
+            [1]- CADASTRAR NÚMERO
+            [2]- VISUALIZAR NÚMEROS
+            [3]- ATUALIZAR NÚMEROS
+            [4]- DELETAR NÚMERO
+            `))
+        };
+
+
+        //MÉTODO DE CADASTRO DE USUÁRIO=>(VERBO: HTTP:POST)
+        const addCont = ()=> {
+        const nomeUser = prompt("Informe o nome da pessoa: ")
+        const numUser= prompt("Informe o número da pessoa: ")
+        const emailUser= prompt("Informe o email:")
+
+        if(!nomeUser||!numUser && !nomeUser || !emailUser && !numUser || !emailUser){
+          
+            alert("Os campos são obrigatórios!")
+        };
+
+        arrNum.push({nomeUser,numUser,emailUser})
+
+        console.log(arrNum)
+
+    }
+
+    const visCont =() => {
+        let visCont= "";
+        let dataUser= new Date().
+
+        arrNum.forEach((dataUser) => {
+        
+        
+        visCont += `Nome: ${dataUser.nomeUser}, Tel: ${dataUser.numUser}, Email : ${dataUser.emailUser}  `
+    
+        });
+
+        console.log(visCont)
+        console.log(data)
+        
+        alert("*****Agenda de Contatos*****"" + visCont  )
+     };
+        visCont()
+
+        function EditNumInfor() {
+        const findNum = prompt("Informe o número que você deseja editar: ");
+        const numeroEncontrado = arrNum.find(
+          (num) => num.numUser === findNum
+        );
+
+        if (!numeroEncontrado) {
+          alert("O número não foi encontrado!");
+
+          return;
+        }
+
+        const novoNumero = prompt("Informe o novo número: ");
+        const novoNomeUsuario = prompt("Informe o nome do usuário: ");
+
+        //  condicao      retorno se verdadeiro
+        novoNumero ? (numeroEncontrado.numUser = novoNumero) : null;
+
+        if (novoNomeUsuario) {
+          numeroEncontrado.nomeUser = novoNomeUsuario;
+        }
+
+        alert("O número foi atualizado com sucesso!");
+      }
+
+    //Método para Deletar => Verbo HTTP (DELETE)
+     function DeletarNum(){
+        const numUser= prompt("Informe o número que deseja deletar: ")
+        const indiceDelete= arrNum.findIndex(num => num.numUser === numeroDelete)
+
+        const confirmacao = window.confirm(`Você deseja mesmo excluir esse número da agenda?${numeroDelete}`)
+        if (confirmacao) {
+            arrNum.splice(indiceDelete, 1)
+        }
+        alert("Número deletado com sucesso!")
+     }
+
+     let opcaoUser = true
+     while (opcaoUser){
+        
+     switch (Agenda()) {
+        case 1:
+            addCont();
+            break;
+        case 2:
+            visCont();
+            break;
+        case 3:
+            EditNumInfor();
+            break;
+        case 4: 
+            DeletarNum() 
+            break;
+     
+        default:
+            opcaoUser= false
+            alert('Opção inválida! Tente novamente')
+            break;
+     }
+    
+     }
+      
+
+    </script>
+</body>
+</html>
