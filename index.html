@@ -23,36 +23,45 @@
 
         //MÉTODO DE CADASTRO DE USUÁRIO=>(VERBO: HTTP:POST)
         const addCont = ()=> {
-        const nomeUser = prompt("Informe o nome da pessoa: ")
-        const numUser= prompt("Informe o número da pessoa: ")
+        let nomeUser = prompt("Informe o nome do contado: ")
+        do {
+        numUser= Number(window.prompt('Digite o número que deseja adicionar: '))
+        if(isNaN(numUser)){
+         window.alert('Você precisa digitar um número')}
+        }while (isNaN(numUser)); 
         const emailUser= prompt("Informe o email:")
+
+
 
         if(!nomeUser||!numUser && !nomeUser || !emailUser && !numUser || !emailUser){
           
             alert("Os campos são obrigatórios!")
-        };
 
-        arrNum.push({nomeUser,numUser,emailUser})
+        }
 
+        let dtUser= new Date()
+        let data= (`${dtUser.getDate()}/${dtUser.getMonth()+ 1}/${dtUser.getFullYear()}`)
+        let horaDoDia= (`${dtUser.getHours()}:${dtUser.getMinutes()}:${dtUser.getSeconds()}`)
+           
+        
+        arrNum.push({nomeUser,numUser,emailUser,data, horaDoDia})
+        
         console.log(arrNum)
-
+        
     }
-
+    
     const visCont =() => {
-        let visCont= "";
-        let dataUser= new Date().
+    let visCont= "";
 
         arrNum.forEach((dataUser) => {
-        
-        
-        visCont += `Nome: ${dataUser.nomeUser}, Tel: ${dataUser.numUser}, Email : ${dataUser.emailUser}  `
+        visCont += 
+        `Nome: ${dataUser.nomeUser}, Tel: ${dataUser.numUser}, Email : ${dataUser.emailUser} Data: ${dataUser.data} Horário: ${dataUser.horaDoDia}`
     
         });
 
         console.log(visCont)
-        console.log(data)
         
-        alert("*****Agenda de Contatos*****"" + visCont  )
+        alert("*****Agenda de Contatos*****" + visCont  )
      };
         visCont()
 
