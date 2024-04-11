@@ -17,6 +17,7 @@
             [2]- VISUALIZAR NÚMEROS
             [3]- ATUALIZAR NÚMEROS
             [4]- DELETAR NÚMERO
+            [5]- SAIR DO PROGRAMA
             `))
         };
 
@@ -102,6 +103,7 @@
         alert("Número deletado com sucesso!")
      }
 
+
      let opcaoUser = true
      while (opcaoUser){
         
@@ -118,7 +120,8 @@
         case 4: 
             DeletarNum() 
             break;
-     
+        case 5: 
+           alert(`Saindo da Agenda até logo `)
         default:
             opcaoUser= false
             alert('Opção inválida! Tente novamente')
